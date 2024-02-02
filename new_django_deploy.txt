@@ -1,0 +1,24 @@
+adduser username
+
+su username
+
+ssh keygen
+
+git clone repo
+
+mkdir -p env/app
+
+source activate /home/user/env/app/bin/activate
+
+pip install -r requirements.txt
+
+python manage.py runserver
+
+-------------------
+chown username /home/username
+chmod 755 /home/username
+
+-------------------
+visudo
+linthr  ALL=(ALL:ALL) /home/linthr
+-------------------

@@ -1,0 +1,28 @@
+
+/etc/systemd/system/app.service
+---------------
+[Unit]
+Description=Your Application
+After=network.target
+
+[Service]
+User=linthr
+Group=www-data
+Restart=always
+WorkingDirectory=/home/linthr/lint-hr-django
+Environment="PATH=/home/linthr/env/linthr/bin"
+ExecStart=/home/linthr/env/linthr/bin/gunicorn lint_edu.wsgi:application -c gunicorn_config.py
+
+[Install]
+WantedBy=multi-user.target
+-----------------------
+
+
+sudo systemctl daemon-reload
+
+sudo systemctl start app
+sudo systemctl enable app
+
+
+-----------------------
+journalctl -u app -f

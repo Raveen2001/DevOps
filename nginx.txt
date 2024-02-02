@@ -1,0 +1,36 @@
+
+Put this code in /etc/nginx/sites-available/your_domain.com
+
+
+------------------------
+server {
+    listen 80;
+    server_name your_domain.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_pass http://unix:/home/path.sock;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+-------------------------
+
+create a symlink 
+ln -s /etc/nginx/sites-available/your_domain.com /etc/nginx/sites-enables/
+
+
+nginx -t
+
+systemctl restart nginx
+
+-----------------------
+To see error logs.
+
+tail -n 20 /var/log/nginx/error.log
+
+
+
