@@ -20,7 +20,7 @@ server {
 -------------------------
 
 create a symlink 
-ln -s /etc/nginx/sites-available/your_domain.com /etc/nginx/sites-enables/
+ln -s /etc/nginx/sites-available/your_domain.com /etc/nginx/sites-enabled/
 
 
 nginx -t

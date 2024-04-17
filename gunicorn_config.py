@@ -1,5 +1,5 @@
 bind = "127.0.0.1:8000"
-bind = 'app.sock'
+bind = 'unix:app.sock'
 
 
 # workers = (2 * cpu) + 1
