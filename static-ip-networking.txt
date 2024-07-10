@@ -1,0 +1,20 @@
+sudo sudo /etc/network/interfaces.d/eth0
+
+--------------------------
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+iface eth0 inet static
+    address 192.168.1.100
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    dns-nameservers 8.8.8.8 8.8.4.4
+---------------------------------
+
+sudo systemctl restart networking
+
+sudo bash -c "ifdown eth0 && ifup eth0"
+sudo bash -c "ip set link down eth0 && ip set link up eth0" 
