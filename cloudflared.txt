@@ -1,0 +1,4 @@
+ssh-config - cloudflared access ssh-config --hostname vayulossh.raveen.in
+
+
+rdp - cloudflared access rdp --hostname vnc.raveen.in --url tcp://localhost:5900

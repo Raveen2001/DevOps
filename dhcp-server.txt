@@ -1,0 +1,22 @@
+#-----------------------#
+Setup static ip for eth0 before this
+#-----------------------#
+
+sudo apt install dnsmasq
+
+sudo vi /etc/dnsmasq.conf
+
+------------------
+interface=eth0
+dhcp-range=192.168.1.50,192.168.1.150,12h
+dhcp-option=option:router,192.168.1.1
+dhcp-option=option:dns-server,8.8.8.8,8.8.4.4
+dhcp-option=option:router,192.168.1.50
+-----------------
+
+sudo systemctl restart dnsmasq
+sudo systemctl restart networking
+
+# ------------------------- #
+if ufw is enable it should allow port 53 and 67
+# ------------------------- #

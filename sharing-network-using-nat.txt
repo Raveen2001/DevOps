@@ -1,0 +1,19 @@
+sudo nano /etc/sysctl.conf
+
+-------
+net.ipv4.ip_forward = 1
+--------
+
+sudo sysctl -p
+
+
+sudo iptables -t nat -A POSTROUTING -o <internet-facing-interface> -j MASQUERADE
+
+sudo iptables -t nat -L POSTROUTING -v -n
+
+
+# ---------------- persist ip tables -----------------#
+sudo apt install iptables-persistent
+sudo bash -c "iptables-save > /etc/iptables/rules.v4"
+
+# it should automatically restore on boot
