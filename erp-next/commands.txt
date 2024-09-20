@@ -1,0 +1,27 @@
+BUILD CUSTOM_IMAGE:
+    1. git clone 
+    2. export APPS_JSON_BASE64=$(base64 -w 0 /path/to/apps.json)
+    3. 
+    docker build \
+  --build-arg=APPS_JSON_BASE64=$APPS_JSON_BASE64 \
+  --tag=custom-erp:1.0.0 \
+  --file=images/custom/Containerfile .
+
+How to add a new side:
+    1. Duplicate the frontend contianer with different name and site header
+    2. change the port
+    3. change nginx config
+    4. obtain certificate
+    5. create site with same name
+    6. install apps. 
+
+1. login to the frontend container
+2. create site - bench new-site marteq
+3. install app - bench --site sitename install-app hrms
+
+
+MYSQL PERMISSION ERROR - RENAME USER '_a548aa520c9ebd0f'@'172.20.0.11' TO '_a548aa520c9ebd0f'@'%'; 
+    - update the user previlages accordingly
+
+
+
