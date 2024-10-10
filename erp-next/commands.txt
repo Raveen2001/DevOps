@@ -16,7 +16,7 @@ How to add a new side:
     6. install apps. 
 
 1. login to the frontend container
-2. create site - bench new-site marteq
+2. create site - bench new-site marteq --no-mariadb-socket
 3. install app - bench --site sitename install-app hrms
 
 

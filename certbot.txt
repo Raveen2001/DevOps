@@ -2,3 +2,20 @@ sudo apt update & sudo apt upgrade
 sudo apt install certbot python3-certbot-nginx
 certbot --nginx
 sudo certbot renew --dry-run
+
+
+WILDCARD CERTIFICATE
+
+PROD - 
+    sudo certbot certonly --manual --preferred-challenges=dns --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.example.com
+
+DEV - 
+   sudo certbot certonly --manual --preferred-challenges=dns --server https://acme-staging-v02.api.letsencrypt.org/directory --agree-tos -d *.example.com 
+
+
+-- AUTO WILDCARD WITH CLOUDFLARE
+https://medium.com/@zafarobad/automating-wildcard-ssl-certificate-renewal-with-certbot-and-cloudflare-dns-3b8b9ded9883
+
+RENEW COMMAND:
+1. sudo certbot certificates -> get certnamez
+2. sudo certbot renew --cert-name keins.org    (--dry-run)
