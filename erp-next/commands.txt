@@ -1,3 +1,5 @@
+
+
 BUILD CUSTOM_IMAGE:
     1. git clone 
     2. export APPS_JSON_BASE64=$(base64 -w 0 /path/to/apps.json)
@@ -7,7 +9,7 @@ BUILD CUSTOM_IMAGE:
   --tag=custom-erp:1.0.0 \
   --file=images/custom/Containerfile .
 
-How to add a new side:
+How to add a new site:
     1. Duplicate the frontend contianer with different name and site header
     2. change the port
     3. change nginx config

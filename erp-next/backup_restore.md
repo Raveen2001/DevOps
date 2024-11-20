@@ -26,7 +26,7 @@
 11. Run the backup command
     bench --site .. restore --force [sql path]
 12. Migrate the site once
-    bench --site .. Migrate
+    bench --site .. migrate
 13. Backup the files as well ?
 
 14. Our site is ready.

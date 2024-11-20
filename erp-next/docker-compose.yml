@@ -3,7 +3,7 @@ version: "3"
 services:
   backend:
     platform: linux/amd64
-    image: custom-erp:latest
+    image: custom-erp:2.0.0
     depends_on:
       - configurator
     deploy:
@@ -15,7 +15,7 @@ services:
 
   configurator:
     platform: linux/amd64
-    image: custom-erp:latest
+    image: custom-erp:2.0.0
     depends_on:
       db:
         condition: service_healthy
@@ -67,9 +67,9 @@ services:
     volumes:
       - db-data:/var/lib/mysql
 
-  site1:
+  marteq:
     platform: linux/amd64
-    image: custom-erp:latest
+    image: custom-erp:2.0.0
     depends_on:
       - backend
       - websocket
@@ -80,7 +80,7 @@ services:
       - nginx-entrypoint.sh
     environment:
       BACKEND: backend:8000
-      FRAPPE_SITE_NAME_HEADER: site1
+      FRAPPE_SITE_NAME_HEADER: marteq
       SOCKETIO: websocket:9000
       UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
       UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
@@ -93,9 +93,9 @@ services:
     ports:
       - "8081:8080"
 
-  site2:
+  lintcloud:
     platform: linux/amd64
-    image: custom-erp:latest
+    image: custom-erp:2.0.0
     depends_on:
       - backend
       - websocket
@@ -106,7 +106,7 @@ services:
       - nginx-entrypoint.sh
     environment:
       BACKEND: backend:8000
-      FRAPPE_SITE_NAME_HEADER: site2
+      FRAPPE_SITE_NAME_HEADER: lintcloud
       SOCKETIO: websocket:9000
       UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
       UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
@@ -121,7 +121,7 @@ services:
 
   queue-long:
     platform: linux/amd64
-    image: custom-erp:latest
+    image: custom-erp:2.0.0
     depends_on:
       - configurator
     deploy:
@@ -138,7 +138,7 @@ services:
 
   queue-short:
     platform: linux/amd64
-    image: custom-erp:latest
+    image: custom-erp:2.0.0
     depends_on:
       - configurator
     deploy:
@@ -177,7 +177,7 @@ services:
 
   scheduler:
     platform: linux/amd64
-    image: custom-erp:latest
+    image: custom-erp:2.0.0
     depends_on:
       - configurator
     deploy:
@@ -192,7 +192,7 @@ services:
 
   websocket:
     platform: linux/amd64
-    image: custom-erp:latest
+    image: custom-erp:2.0.0
     depends_on:
       - configurator
     deploy:
