@@ -6,15 +6,18 @@ ssh keygen
 
 git clone repo
 
-mkdir -p env/app
+python3 -m venv venv
 
-source activate /home/user/env/app/bin/activate
+source venv/bin/activate
 
 pip install -r requirements.txt
 
-python manage.py runserver
+python manage.py migrate
+python manage.py createsuperuser
 
--------------------
+python manage.py runserver 0.0.0.0:8000
+
+-------------------å
 chown username /home/username
 chmod 755 /home/username
 

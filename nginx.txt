@@ -7,6 +7,10 @@ server {
     listen 80;
     server_name your_domain.com;
 
+    location /static/ {
+        alias /path/to/your/django/project;
+    }
+
     location / {
         proxy_pass http://localhost:3000;
         proxy_pass http://unix:/home/path.sock;
