@@ -1,4 +1,4 @@
-sudo sudo /etc/network/interfaces.d/eth0
+sudo vi /etc/network/interfaces.d/eth0
 
 --------------------------
 # The loopback network interface
